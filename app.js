@@ -1,12 +1,14 @@
 // src/app.js
 const express = require('express')
 const routes = require('./routes')
+const cors = require('cors');
 const { errorHandler } = require('./middlewares/errorHandler')
 const { notFound } = require('./middlewares/notFound')
 const requestLogger = require('./middlewares/requestLogger') // optional
 
 const app = express()
 
+app.use(cors());
 // core middlewares
 app.use(express.json({ limit: '2mb' }))
 app.use(express.urlencoded({ extended: true }))
